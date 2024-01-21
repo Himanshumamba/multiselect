@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Append and Remove Names</title>
+    <style>
+        .remove-symbol {
+            color: red;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mb-3 mt-3">
+        <label for="request_assigned">Request Assigned To <span class="myred">*</span></label>
+        <input type="text" class="form-control" id="request_assigned" name="request_assigned">
+
+        <div id="userList1">
+            <ul class="list-unstyled">
+                <li class="dsg_link" onclick="updateInput(this)">Amy Adyanthaya<span class="remove-symbol" onclick="removeName(this)">X</span></li>
+                <li class="dsg_link" onclick="updateInput(this)">Andrea Fitzgerald<span class="remove-symbol" onclick="removeName(this)">X</span></li>
+                <li class="dsg_link" onclick="updateInput(this)">Pankaj Kumar<span class="remove-symbol" onclick="removeName(this)">X</span></li>
+                <li class="dsg_link" onclick="updateInput(this)">Priyanka Pollarine<span class="remove-symbol" onclick="removeName(this)">X</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function updateInput(element) {
+            var name = element.textContent.trim();
+            var currentInput = document.getElementById("request_assigned").value;
+            document.getElementById("request_assigned").value = currentInput + " " + name;
+        }
+
+        function removeName(element) {
+            var nameToRemove = element.previousSibling.textContent.trim();
+            var currentInput = document.getElementById("request_assigned").value;
+            var updatedInput = currentInput.replace(nameToRemove, '').trim();
+            document.getElementById("request_assigned").value = updatedInput;
+        }
+    </script>
+</body>
+</html>
